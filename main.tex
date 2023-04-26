@@ -201,7 +201,7 @@
                         \hline
                     \end{tabular}
                 \end{center}
-                \caption{Bản tần suất của số điếu thuốc được hút trong một ngày của 484 bà mẹ trong tập CHDS có hút thuốc trong thời gian thai kỳ,
+                \caption{Bảng tần suất của số điếu thuốc được hút trong một ngày của 484 bà mẹ trong tập CHDS có hút thuốc trong thời gian thai kỳ,
                 tỷ lệ phần trăm được làm tròn đến số nguyên gần nhất}
                 \label{tb:1.3}
             \end{table}
@@ -340,8 +340,195 @@ pylab.show()
             \includegraphics[scale=0.7]{5.png}
             \caption{Đồ thị quantile tương ứng với phân phối dữ liệu thời gian thai kỳ của em bé.}
         \end{figure}
-    \end{enumerate}
 
+        Từ đồ thị quantile ta nhận thấy phân phối thời gian thai kỳ của em bé có đuôi bên trái và bên phải dài hơn so với phân phối đều.
+
+        \item Sử dụng xấp xỉ phân phối chuẩn ước lượng tỷ lệ của người mẹ trong tập CHDS có chiều cao từ 62 đến 64 inches đến nửa inch gần nhất (nằm giữa 61.5 và 64.5 inch).
+        Chiều cao trung bình là 64 inch và độ lệch tiêu chuẩn SD là 2.5 inches.
+
+        Ta gọi $X$ (inches) là chiều cao của các bà mẹ.
+        \begin{equation*}
+            X \sim \mathcal{N} (64; 2.5^2)
+        \end{equation*}
+
+        Ta cần tính $P(61.5 \leq X \leq 64.5)$:
+
+        \begin{equation*}
+            \begin{aligned}
+                P (61.5 \leq X \leq 64.5) &= P \Big( \dfrac{61.5 - 64}{2.5} \leq \dfrac{Z - 64}{2.5} \leq \dfrac{64.5 - 64}{2.5} \Big) \\
+                &= P (-1 \leq Z \leq 0.2) \\
+                &= \Phi (0.2) - \Phi (-1) \\
+                &= \Phi (0.2) - (1 - \Phi(1)) \\
+                &= \Phi(0.2) + \Phi(1) - 1 \\
+                &= 0.57926 + 0.84134 - 1 \\
+                &= 0.4206
+            \end{aligned}
+        \end{equation*}
+
+        \item Hai từ cần điền vào chỗ trống là:
+        Vị trí thứ nhất: 2180
+        Vị trí thứ hai: 2.64
+
+        \item Ta giả sử có 100 quan sát từ phân phối chuẩn tắc.
+        Tỷ lệ trong số các quan sát này mà ta kỳ vọng nằm ngoài whisker của một đồ thị whisker and box?
+
+
+        Đối với phân phối chuẩn tắc ta có $z_{0.25}=-0.6745$ và $z_{0.75}=0.6745$ hay $Q_1=-0.6745$ và $Q_3=0.6745$.
+        Vậy $IQR=Q_3 - Q_1 = 0.6745 - (-0.6745)=1.349$.
+
+        Xác suất để một quan sát nằm ngoài whisker là:
+
+        \begin{equation*}
+            \begin{aligned}
+                P (Z < Q_1 - 1.5 \times IQR \cup Z > Q_3 + 1.5 \times IQR) &= P (Z < Q_1 - 1.5 \times IQR) + P (Z > Q_3 + 1.5 \times IQR) \\
+                &= P(Z < -0.6745 - 1.5 \times 1.349) + P (Z > 0.6745 + 1.5 \times 1.349) \\
+                &= P(Z < -2.648) + P (Z > 2.698) \\
+                &= \Phi(-2.698) + (1 - \Phi(2.698)) \\
+                &= (1 - \Phi(2.698)) + (1 - \Phi(2.698)) \\
+                &= 2 \times (1 - \Phi(2.698)) \\
+                &= 0.00698 = 0.698 \%
+            \end{aligned}
+        \end{equation*}
+
+        Như vậy tỷ lệ số quan sát nằm ngoài whisker của một đồ thị whisker and box là 0.698 \%.
+        Và như vậy chỉ có khoảng 1 quan sát nằm ngoài whisker của một đồ thị whisker and box.
+
+        \item Tạo một bảng của tình trạng hôn nhân cho biết tỷ lệ người hút thuốc và không hút thuốc trong từng nhóm tình trạng hôn nhân của các bà mẹ trong nghiên cứu Missouri (hình \ref{fig:Table1.16}).
+        \begin{figure}[h!]
+            \centering
+            \includegraphics[scale=0.8]{Table1.6.png}
+            \caption{Tỷ lệ người mẹ hút thuốc theo từng nhóm đặc trưng theo tình trạng hôn nhân, học vấn và tuổi}
+            \label{fig:Table1.16}
+        \end{figure}
+
+        \begin{table}[h!]
+            \begin{center}
+                \begin{tabular}{|c|c|c|}
+                    \hline
+                    Tình trạng hôn nhân& Tỷ lệ người hút thuốc & Tỷ lệ người không hút thuốc \\  
+                    \hline
+                    Đã kết hôn & 27 \% & 73 \% \\
+                    \hline
+                    Độc thân & 55 \% & 45 \% \\
+                    \hline
+                \end{tabular}
+            \end{center}
+            \caption{Tỷ lệ các bà mẹ hút thuốc trong thời kỳ mang thai theo tình trạng hôn nhân trong nghiên cứu Missouri}
+            \label{tb:Marital-status}
+        \end{table}
+        Bảng của tình trạng hôn nhân cho biết tỷ lệ người hút thuốc và không hút thuốc trong từng nhóm tình trạng hôn nhân của các bà mẹ trong nghiên cứu Missouri được thể hiện ở bảng \ref{tb:Marital-status}
+
+        \item Tạo một biểu đồ cột chồng thể hiện tỷ lệ về các cấp độ học vấn cho cả các bà mẹ hút thuốc và không hút thuốc trong thời gian thai kỳ trong nghiên cứu Missouri (hình \ref{fig:Table1.16})
+        
+        Ta gọi $A$ là sự kiện một bà mẹ ở nhóm trình độ dưới lớp 12.
+        Ta gọi $B$ là sự kiện một bà mẹ ở nhóm trình độ lớp 12.
+        Ta gọi $C$ là sự kiện một bà mẹ ở nhóm trình độ trên lớp 12.
+
+        Ta gọi $Y$ là sự kiện một bà mẹ hút thuốc trong thời gian thai kỳ.
+
+        Ta cần tính $P(A \vert Y), P(B \vert Y), P(C \vert Y)$ và $P(A \vert \overline{Y}), P(B \vert \overline{Y}), P(C \vert \overline{Y})$.
+
+        Ta có $P(A)=0.21, P(B)=0.46, P(C)=0.33, P(Y \vert A)=0.55, P(Y \vert B)=0.29, P(Y \vert C)=0.15$
+
+        Ta xét hệ đầy đủ $A, B, C$, theo công thức xác suất đầy đủ:
+
+        \begin{equation*}
+            \begin{aligned}
+                P(Y) &= P(A) P (Y \vert A) + P(B) P (Y \vert B) + P(C) P(Y \vert C) \\
+                &= 0.21 \times 0.55 + 0.46 \times 0.29 + 0.33 \times 0.15 \\
+                &= 0.2984 \\
+                \Rightarrow P(\overline{Y}) &= 1 - P(Y) = 1 - 0.2984 = 0.7016
+            \end{aligned}
+        \end{equation*}
+
+        \begin{equation*}
+            \begin{aligned}
+                P(A \vert Y) &= \dfrac{P(AY)}{P(Y)}=\dfrac{P(A)P(Y\vert A)}{P(Y)}=\dfrac{0.21\times 0.55}{0.2984}=0.3871 \\
+                P(B \vert Y) &= \dfrac{P(BY)}{P(Y)}=\dfrac{P(B)P(Y\vert B)}{P(Y)}=\dfrac{0.46\times 0.29}{0.2984}=0.4471 \\
+                P(C \vert Y) &= \dfrac{P(CY)}{P(Y)}=\dfrac{P(C)P(Y\vert C)}{P(Y)}=\dfrac{0.33\times 0.15}{0.2984}=0.1658 \\
+                P(A \vert \overline{Y}) &= \dfrac{P(A\overline{Y})}{P(\overline{Y})}=\dfrac{P(A)P(\overline{Y}\vert A)}{P(\overline{Y})}=\dfrac{0.21\times 0.45}{0.7016}=0.1347 \\
+                P(B \vert \overline{Y}) &= \dfrac{P(B\overline{Y})}{P(\overline{Y})}=\dfrac{P(B)P(\overline{Y}\vert B)}{P(\overline{Y})}=\dfrac{0.46\times 0.71}{0.7016}=0.4655 \\
+                P(C \vert \overline{Y}) &= \dfrac{P(C\overline{Y})}{P(\overline{Y})}=\dfrac{P(C)P(\overline{Y}\vert C)}{P(\overline{Y})}=\dfrac{0.33\times 0.85}{0.7016}=0.3998 \\
+            \end{aligned}
+        \end{equation*}
+
+        Ta thực hiện code vẽ hiện biểu đồ cột chồng thể hiện tỷ lệ về các cấp độ học vấn cho cả các bà mẹ hút thuốc và không hút thuốc trong thời gian thai kỳ trong nghiên cứu Missouri:
+
+        \begin{python}
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+            
+df = pd.DataFrame({"Under 12": [0.3871, 0.1347],
+                    "12": [0.4471, 0.4655],
+                    "Over 12": [0.1658, 0.3998]},
+                    index=["Smoked", "Non Smoked"])
+            
+ax = df.plot(kind="bar", stacked=True, color=["red", "yellow", "blue"])
+            
+for rect in ax.patches:
+    # Find where everything is located
+    height = rect.get_height()
+    width = rect.get_width()
+    x = rect.get_x()
+    y = rect.get_y()
+                
+    # The height of the bar is the data value and can be used as the label
+    label_text = f'{height:.4f}'  # f'{height:.2f}' to format decimal values
+                
+    # ax.text(x, y, text)
+    label_x = x + width / 2
+    label_y = y + height / 2
+            
+    # plot only when height is greater than specified value
+    if height > 0:
+        ax.text(label_x, label_y, label_text, ha='center', va='center', fontsize=8)
+            
+plt.xlabel("Smoking status")
+plt.xticks(rotation=0)
+plt.ylabel("Percent in each group")
+
+plt.title("Percentage of each education level for both smokers and nonsmokers")
+
+plt.show()
+        \end{python}
+        \begin{figure}[h!]
+            \centering
+            \includegraphics[scale=0.8]{10.png}
+            \caption{Biểu đồ cột chồng thể hiện tỷ lệ về các cấp độ học vấn cho cả các bà mẹ hút thuốc và không hút thuốc trong thời gian thai kỳ trong nghiên cứu Missouri}
+        \end{figure}
+
+        \item Tạo một biểu đồ cột theo tuổi và tình trạng hút thuốc trong thời gian thai kỳ của các bà mẹ trong nghiên cứu Missouri (hình \ref{fig:Table1.16}).
+        Trong từng nhóm, cột thể hiện tỷ lệ các bà mẹ hút thuốc trong nhóm.
+
+        Ta thực hiện code vẽ biểu đồ cột thể hiện tỷ lệ các bà mẹ hút thuốc trong từng nhóm tuổi:
+
+        \begin{python}
+import numpy as np
+import matplotlib.pyplot as plt
+
+data = {"Under 18": 43, "18-19": 44, "20-24": 34, "25-29": 23, "30-34": 21, "Over 34": 26}
+
+x = list(data.keys())
+y = list(data.values())
+
+fig, ax = plt.subplots(figsize=(9, 9))
+ax.bar(x, y, color ="blue", width = 0.4)
+plt.bar_label(ax.containers[0], label_type='edge', color='red', rotation=90, fontsize=15, padding=10)
+ 
+plt.xlabel("Age group")
+plt.ylabel("Percentage of mothers who smokes")
+plt.title("Bar graph of age and smoking status")
+plt.grid()
+plt.show()
+        \end{python}
+
+        \begin{figure}[h!]
+            \centering
+            \includegraphics[scale=0.5]{11.png}
+            \caption{Biểu đồ cột theo tuổi và tình trạng hút thuốc trong thời gian thai kỳ của các bà mẹ trong nghiên cứu Missouri}
+        \end{figure}
+    \end{enumerate}
 \end{loigiai}
 
 \newpage
