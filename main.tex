@@ -525,9 +525,66 @@ plt.show()
 
         \begin{figure}[h!]
             \centering
-            \includegraphics[scale=0.5]{11.png}
+            \includegraphics[scale=0.4]{11.png}
             \caption{Biểu đồ cột theo tuổi và tình trạng hút thuốc trong thời gian thai kỳ của các bà mẹ trong nghiên cứu Missouri}
         \end{figure}
+
+        Ta tính độ tương quan giữa độ tuổi và tỷ lệ hút thuốc
+
+        \item Trong nghiên cứu Missouri, cân nặng trung bình khi sinh của các em bé mà có mẹ hút thuốc trong thời gian thai kỳ là 3180 grams và độ lệch chuẩn SD 500 grams.
+        Cân nặng trung bình và độ lệch chuẩn SD trong đơn vị ounces. Biết rằng 0.0035 ounces tương đương 1 gram.
+
+        Ta có cân nặng trung bình trong đơn vị ounces là: $3180\times 0.035=111.3$ (ounces) và độ lệch chuẩn SD trong đơn vị ounces là: $500 \times 0.035=17.5$ (ounces).
+
+        \textbf{19.} Chứng minh rằng trung bình $\bar{x}$ là hằng số cực tiểu hóa hàm sai lệch bình phương tương ứng với $c$:
+
+        \begin{equation*}
+            \sum_{i=1}^n (x_i - c)^2
+        \end{equation*}
+
+        Ta đặt $f(c) = \sum_{i=1}^n (x_i - c)^2$. Ta biến đổi:
+
+        \begin{equation*}
+            \begin{aligned}
+                f(c) &= \sum_{i=1}^n (x_i - c)^2 \\
+                &= \sum_{i=1}^n (x_i^2 - 2x_i c + c^2) \\
+                &= \sum_{i=1}^n x_i^2 - 2(\sum_{i=1}^n x_i)c + n c^2 \\
+                &= n\Bigg(c - \dfrac{\sum_{i=1}^n x_i}{n}\Bigg)^2 + \Bigg(\sum_{i=1}^n x_i^2 - \dfrac{(\sum_{i=1}^n x_i)^2}{n}\Bigg)
+            \end{aligned}
+        \end{equation*}
+
+        Ta nhận thấy thành phần $\Bigg(\sum_{i=1}^n x_i^2 - \dfrac{(\sum_{i=1}^n x_i)^2}{n}\Bigg)$ không phụ thuộc vào $c$ vì vậy $f(c)$ nhỏ nhất khi $\Bigg(c - \dfrac{\sum_{i=1}^n x_i}{n}\Bigg)^2=0$ hay $c= \dfrac{\sum_{i=1}^n x_i}{n} = \bar{x}$ (điều phải chứng minh).
+
+        \textbf{20.} Chứng minh rằng trung vị $\tilde{x}$ của $x_1, \dots, x_n$ là hằng số cực tiểu hóa sai lệch tuyệt đối tương ứng với $c$:
+
+        \begin{equation*}
+            \sum_{i=1}^n \lvert x_i - c \vert
+        \end{equation*}
+
+        Ta đặt $f(c) = \sum_{i=1}^n \lvert x_i - c \vert$
+        Ta giả sử dãy $x_1, \dots, x_n$ được sắp xếp theo chiều không giảm hay $x_1 \leq x_2 \leq \dots \leq x_n$.
+        Ta chọn một số $c$ sao cho $c < x_1$, khi đó:
+
+        \begin{equation*}
+            f(c) = \sum_{i=1}^n \lvert x_i - c \vert = \sum_{i=1}^n (x_i - c)
+        \end{equation*}
+
+        Nếu $c$ tăng dần nhưng vẫn nhỏ hơn $x_1$ thì từng thành phần $x_i - c$ sẽ giảm đến khi $c$ đạt đến $x_1$,
+        vì vậy $f(x_1) < f(x) \thickspace \forall c < x_1$.
+        Ta chọn một số $c$ sao cho $x_k \leq c \leq c + d \leq x_{k+1}(d > 0)$, khi đó:
+
+        \begin{equation*}
+            \begin{aligned}
+                f(c + d) &= \sum_{i=1}^k (c + d - x_i) + \sum_{i=k+1}^n (x_i - (c + d)) \\
+                &= dk + \sum_{i=1}^k (c - x_i) - d(n-k) + \sum_{i=k+1}^n (x_i - c) \\
+                &= d(2k -n) + \sum_{i=1}^k (c - x_i) + \sum_{i=k+1}^n (x_i - c) \\
+                &= d(2k - n) + f(c) \\
+            \Rightarrow f(c + d) - f(c) &= d(2k - n)
+            \end{aligned}
+        \end{equation*}
+        Ta nhận thấy khi $2k < n$, thì $f(c + d) < f(c)$, $2k = n$ thì $f(c+d)=f(c)$, $2k > n$ thì $f(c+d) > f(c)$.
+        Hay khi $k$ tăng dần trước khi đạt đến $n/2$ thì f(c) giảm, và khi $k$ lớn hơn $n / 2$ thì f(c) tăng, nghĩa là f(c) sẽ đạt cực tiểu tại $k=n/2$ nghĩa là $k=n/2$ ở chính giữa dãy số đã được sắp xếp theo thứ tự không giảm.
+        Vì vậy $f(c) = \sum_{i=1}^n \lvert x_i - c \vert = \sum_{i=1}^n (x_i - c)$ đạt cực tiểu khi $c$ chính là trung vị của dãy $x_1, \dots, x_n$ (điều phải chứng minh).
     \end{enumerate}
 \end{loigiai}
 
