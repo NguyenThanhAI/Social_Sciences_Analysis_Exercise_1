@@ -734,7 +734,7 @@ plt.show()
 
             Ta đặt $k$ là số nguyên sao cho $1 \leq k \leq n$.
             Xác suất để phần tử được sắp xếp thứ $k$ nhỏ hơn hoặc bằng một giá trị $u$ được cho bởi xác suất $k-1$ của $n$ quan sát nhỏ hơn $n$ và $n-k$ quan sát còn lại lớn hơn $u$.
-            Ta tính xác suất $U_k \leq u$:
+            Ta tính xác suất $U_{(k)} \leq u$:
 
             \begin{equation*}
                 P(U_k \leq u) = C_{k-1}^n u^{k-1} (1-u)^{n-k}
@@ -760,6 +760,23 @@ plt.show()
                     &= \dfrac{k}{n+1}
                 \end{aligned}
             \end{equation*}
+            Vậy ta có $\mathbb{E} (U_{(k)})= \dfrac{k}{n+1}$ (điều phải chứng minh).
+
+            \item Sử dụng ý a và ý b giải thích $X_{(k)}\approx z_{k/n+1}$
+            
+            Ta gọi $X$ là biến ngẫu nhiên tuân theo phân bố chuẩn tắc $\mathcal{N}(0;1)$.
+            Do đã được chứng minh ở ý a $X \sim \mathcal{N}(0;1)$ thì $\Phi(X) \sim U \lbrack 0; 1\rbrack$.
+
+            Mặt khác, giả sử ta lấy mẫu $n$ điểm thì $\mathbb{E}(\Phi(X_{(k)})) = \dfrac{k}{n+1}$ (đã được chứng minh ở ý b).
+            Vậy nên:
+
+            \begin{equation*}
+                \begin{aligned}
+                    \mathbb{E} (P(X < X_{(k)})) = \mathbb{E} (\Phi(X_{(k)})) = \dfrac{k}{n+1}
+                \end{aligned}
+            \end{equation*}
+
+            Theo định nghĩa phân vị mức: $P(X < z_q)=\Phi(z_q)=q$ và khi ta lấy mẫu một số lần đủ lớn thì $X_{(k)} \approx z_{k/n+1}$(điều phải chứng minh).
         \end{enumerate}
 
         \item Chứng minh rằng trung bình $\bar{x}$ là hằng số cực tiểu hóa hàm sai lệch bình phương tương ứng với $c$:
