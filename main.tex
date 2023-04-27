@@ -678,7 +678,7 @@ print(cor)
         Như ở câu 8, ta đã biết được IQR của một phân phối chuẩn $\mathcal{N}(\mu, \sigma^2)$ là $IQR=1.349\sigma$.
 
         Ta sắp xếp lại danh sách theo thứ tự không giảm $x_1 \leq x_2 \leq \dots \leq x_n$.
-        Từ $\bar{x}$, ta chọn hai điểm $Q_1$ là $x_k$ sao cho $k / n + 1 \approx 0.25$ và $Q_2$ là $x_j$ sao cho $j/ n+1 \approx 0.75$.
+        Từ $\bar{x}$, ta chọn hai điểm $Q_1$ là $x_k$ sao cho $k / (n + 1) \approx 0.25$ và $Q_2$ là $x_j$ sao cho $j/ (n+1) \approx 0.75$.
         Ta có thể ước lượng $\sigma$:
 
         \begin{equation*}
@@ -775,7 +775,7 @@ print(cor)
                 \begin{aligned}
                     \mathbb{E} (U_{(k)}) &= \int_{-\infty}^{\infty} u f(u) du = \int_{0}^{1} u f(u) du \\
                     &= \int_{0}^{1} k C_k^n u^k (1-u)^{n-k} du \\
-                    &= k C_k^n  B(k+1, n-k+1) (\text{theo định nghĩa hàm beta } B(p, q) = \int_{0}^{1} x^{p-1}. (1-x)^{q-1}dx) \\
+                    &= k C_k^n  B(k+1, n-k+1) (\text{theo định nghĩa hàm beta } B(p, q) = \int_{0}^{1} x^{p-1} (1-x)^{q-1}dx) \\
                     &= k C_k^n \dfrac{\Gamma(k+1)\Gamma(n-k+1)}{\Gamma(k+1 + (n-k+1))} (\text{liên hệ giữa hàm Beta và hàm Gamma } B(p, q) = \dfrac{\Gamma(p)\Gamma(q)}{\Gamma(p+q)}) \\
                     &= k C_k^n \dfrac{\Gamma(k+1)\Gamma(n-k+1)}{\Gamma(n+2)} \\
                     &= k C_k^n \dfrac{k! (n-k)!}{(n+1)!} (\text{theo công thức tính hàm Gamma } \Gamma(n)=(n-1)! \forall n \in \mathbb{N}) \\
