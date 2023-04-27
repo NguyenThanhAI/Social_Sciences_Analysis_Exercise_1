@@ -575,7 +575,24 @@ plt.show()
             \caption{Biểu đồ cột theo tuổi và tình trạng hút thuốc trong thời gian thai kỳ của các bà mẹ trong nghiên cứu Missouri}
         \end{figure}
 
-        Ta tính độ tương quan giữa độ tuổi và tỷ lệ hút thuốc.
+        Ta tính độ tương quan giữa độ tuổi và tỷ lệ hút thuốc. Ta sử dụng code:
+
+        \begin{python}
+import numpy as np
+
+age = np.array([9, 18.5, 22, 27, 32, 37])
+percent = np.array([43, 44, 34, 23, 21, 26])
+
+var_age = np.mean((age - np.mean(age))**2)
+var_percent = np.mean((percent - np.mean(percent))**2)
+cov = np.mean((age - np.mean(age))*(percent - np.mean(percent)))
+print(cov)
+cor = cov / np.sqrt(var_age * var_percent)
+print(cor)
+        \end{python}
+
+        Ta tính được hệ số tương quan giữa tuổi và tỷ lệ hút thuốc là -0.8489.
+        Ta nhận thấy khi tuổi càng lớn thì tỷ hệ hút thuốc càng có xu hướng giảm.
 
         Tuổi của người mẹ hoàn toàn có thể là yếu tố gây nhiễu giữa mối quan hệ giữa người mẹ có hút thuốc trong thời gian thai kỳ hay không và cân nặng khi sinh của em bé.
         Lý do vì tuổi của người mẹ có ảnh hưởng đến cân nặng của em bé, còn phụ nữ lớn tuổi có thể sinh những em bé có cân nặng thấp hơn.

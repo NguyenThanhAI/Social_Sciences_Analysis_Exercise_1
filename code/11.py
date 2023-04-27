@@ -15,3 +15,13 @@ plt.ylabel("Percentage of mothers who smokes")
 plt.title("Bar graph of age and smoking status")
 plt.grid()
 plt.show()
+
+age = np.array([9, 18.5, 22, 27, 32, 37])
+percent = np.array([43, 44, 34, 23, 21, 26])
+
+var_age = np.mean((age - np.mean(age))**2)
+var_percent = np.mean((percent - np.mean(percent))**2)
+cov = np.mean((age - np.mean(age))*(percent - np.mean(percent)))
+print(cov)
+cor = cov / np.sqrt(var_age * var_percent)
+print(cor)
