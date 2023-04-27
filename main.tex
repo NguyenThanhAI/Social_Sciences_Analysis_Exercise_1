@@ -643,7 +643,26 @@ plt.show()
             IQR(y) = Q_3 (y) - Q_1 (y) = a + b Q_3(x) - (a + b Q_1(x)) = b IQR(x)
         \end{equation*}
 
-        \textbf{17.} Ta giả sử phân vị mức $y_q$ của phân phối chuẩn $\mathcal{N}(\mu, \sigma^2)$ được vẽ theo phân vị mức $z_q$ của phân phối chuẩn tắc $\mathcal{N}(0, 1)$.
+        \item Ta xét một danh sách các số $x_1, \dots, x_n$ với $x_1 < x_2 < \dots < x_n$, chứng minh rằng bằng cách thay $x_n$ bằng một số khác, trung bình và độ lệch chuẩn SD của danh sách có thể rất lớn.
+        Nhưng điều này có đúng với trung vị và IQR? Giải thích.
+
+        Ta nhận thấy khi thay $x_n$ bởi một số lớn thì trung vị (giá trị) chia danh sách làm hai nửa không bị ảnh hưởng.
+        Và $Q_1, Q_3$ cũng không bị thay đổi dẫn đến $IQR = Q_3 - Q_1$ không thay đổi. 
+        Vậy nên điều tương tự không đúng với trung vị và IQR.
+
+        \item Ta giả sử có $n$ quan sát từ một phân phối chuẩn. Làm thế nào có thể sử dụng IQR của danh sách các quan sát để ước lượng $\sigma$?
+        
+        Như ở câu 8, ta đã biết được IQR của một phân phối chuẩn $\mathcal{N}(\mu, \sigma^2)$ là $IQR=1.349\sigma$.
+
+        Ta sắp xếp lại danh sách theo thứ tự không giảm $x_1 \leq x_2 \leq \dots \leq x_n$.
+        Từ $\bar{x}$, ta chọn hai điểm $Q_1$ là $x_k$ sao cho $k / n + 1 \approx 0.25$ và $Q_2$ là $x_j$ sao cho $j/ n+1 \approx 0.75$.
+        Ta có thể ước lượng $\sigma$:
+
+        \begin{equation*}
+            \sigma = \dfrac{x_j - x_k}{1.349}
+        \end{equation*}
+
+        \item Ta giả sử phân vị mức $y_q$ của phân phối chuẩn $\mathcal{N}(\mu, \sigma^2)$ được vẽ theo phân vị mức $z_q$ của phân phối chuẩn tắc $\mathcal{N}(0, 1)$.
         Chứng minh rằng hệ số góc và hệ số chặn của đường thẳng là $\sigma$ và $\mu$ tương ứng.
 
         Ta có $Y \sim \mathcal{N}(\mu, \sigma^2)$ và $Z \sim \mathcal{N}(0, 1)$.
@@ -667,7 +686,37 @@ plt.show()
 
         Từ đây ta suy ra $y_q = \mu + \sigma z_q$ hay $y_q$ có thể được biểu diễn từ $z_q$ bằng phương trình đường thẳng với hệ số góc là $\sigma$ và hệ số chặn là $\mu$ (điều phải chứng minh).
 
-        \textbf{19.} Chứng minh rằng trung bình $\bar{x}$ là hằng số cực tiểu hóa hàm sai lệch bình phương tương ứng với $c$:
+        \item Ta giả sử $X_1, X_2, \dots, X_n$ tạo thành một mẫu từ phân phối chuẩn tắc.
+        Chứng minh những điều sau:
+
+        \begin{enumerate}
+            \item $\Phi(X_1), \dots, \Phi(X_n)$ tương đương với lấy mẫu từ một phân phối đều trên $(0, 1)$
+            
+            Ta xét hai số $a$ và $b$ được lấy mẫu từ phân phối chuẩn tắc và $X \sim \mathcal{N}(0;1)$.
+            Ta có:
+
+            \begin{equation*}
+                P(a < X < b) = \Phi(b) - \Phi(a)
+            \end{equation*}
+
+            Mặt khác, hai số $c, d \in (0, 1)$ và $Y \sim U \lbrack 0; 1 \rbrack$:
+
+            \begin{equation*}
+                P(c < Y < d) = d - c
+            \end{equation*}
+
+            Từ hai điều trên, ta nhận thấy $X_1, \dots, X_n$ được lấy mẫu từ phân bố chuẩn tắc thì tương đương $\Phi(X_1), \dots, \Phi(X_n)$ được lấy mẫu từ phân phối đều trên $(0,1)$.
+
+            \item Đặt $U_1, \dots, U_n$ là một mẫu từ một phân phối chuẩn trên $(0, 1)$. Chứng minh:
+            \begin{equation*}
+                \mathbb{E} (U_{(k)}) = \dfrac{k}{n+1}
+            \end{equation*}
+            với $U_{(1)} \leq \dots \leq U_{(n)}$ là mẫu được sắp xếp theo thứ tự không giảm.
+
+            
+        \end{enumerate}
+
+        \item Chứng minh rằng trung bình $\bar{x}$ là hằng số cực tiểu hóa hàm sai lệch bình phương tương ứng với $c$:
 
         \begin{equation*}
             \sum_{i=1}^n (x_i - c)^2
@@ -686,7 +735,7 @@ plt.show()
 
         Ta nhận thấy thành phần $\Bigg(\sum_{i=1}^n x_i^2 - \dfrac{(\sum_{i=1}^n x_i)^2}{n}\Bigg)$ không phụ thuộc vào $c$ vì vậy $f(c)$ nhỏ nhất khi $\Bigg(c - \dfrac{\sum_{i=1}^n x_i}{n}\Bigg)^2=0$ hay $c= \dfrac{\sum_{i=1}^n x_i}{n} = \bar{x}$ (điều phải chứng minh).
 
-        \textbf{20.} Chứng minh rằng trung vị $\tilde{x}$ của $x_1, \dots, x_n$ là hằng số cực tiểu hóa sai lệch tuyệt đối tương ứng với $c$:
+        \item Chứng minh rằng trung vị $\tilde{x}$ của $x_1, \dots, x_n$ là hằng số cực tiểu hóa sai lệch tuyệt đối tương ứng với $c$:
 
         \begin{equation*}
             \sum_{i=1}^n \lvert x_i - c \vert
