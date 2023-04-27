@@ -320,12 +320,12 @@ plt.show()
 
         \begin{equation*}
             \begin{aligned}
-                &0.5 \times 20 + 2.0 \times 2 + 4.5 \times 2 + 6.5 \times 2 + 6.0 \times 4 + 4.8 \times 5 + x \times 5 + 0.9 \times 10 + 0.1\times 10 = 100 \\
-                &\Rightarrow x = \dfrac{100 - (0.5 \times 20 + 2.0 \times 2 + 4.5 \times 2 + 6.5 \times 2 + 6.0 \times 4 + 4.8 \times 5 + 0.9 \times 10 + 0.1\times 10)}{5} = \dfrac{100-94}{5}=1.2 \%
+                &0.5 \times 2 + 2.0 \times 2 + 4.5 \times 2 + 6.5 \times 2 + 6.0 \times 4 + 4.8 \times 5 + x \times 5 + 0.9 \times 10 + 0.1\times 10 = 100 \\
+                &\Rightarrow x = \dfrac{100 - (0.5 \times 2 + 2.0 \times 2 + 4.5 \times 2 + 6.5 \times 2 + 6.0 \times 4 + 4.8 \times 5 + 0.9 \times 10 + 0.1\times 10)}{5} = \dfrac{100-85}{5}=3 \%
             \end{aligned}
         \end{equation*}
 
-        Vậy chiều cao của cột tương ứng với khoảng 35 - 40 tuổi là 1.2 \%
+        Vậy chiều cao của cột tương ứng với khoảng 35 - 40 tuổi là 3 \%
 
         \item Ta xét quantile plot của chiều cao và cân nặng của những người cha trong CHDS (hình \ref{fig:1.15}). Hãy miêu tả hình dạng của các phân phối trên.
         \begin{figure}[h!]
@@ -584,6 +584,65 @@ plt.show()
 
         Ta có cân nặng trung bình trong đơn vị ounces là: $3180\times 0.035=111.3$ (ounces) và độ lệch chuẩn SD trong đơn vị ounces là: $500 \times 0.035=17.5$ (ounces).
         
+        \item Ta xét một danh sách các số $x_1, \dots, x_n$. Ta dịch và nhân từng số $x_i$ như sau:
+        \begin{equation*}
+            y_i = a + b x_i
+        \end{equation*}
+
+        Tìm trung bình và độ lệch chuẩn mới SD của danh sách $y_i, \dots, y_n$ được tính bằng trung bình và độ lệch chuẩn SD của danh sách ban đầu $x_1, \dots, x_n$.
+
+        Ta tính $\bar{y}$:
+
+        \begin{equation*}
+            \begin{aligned}
+                \bar{y} &= \sum_{i=1}^n \dfrac{y_i}{n} \\
+                &= \sum_{i=1}^n \dfrac{a + b x_i}{n} \\
+                &= \dfrac{na + b \sum_{i=1}^n x_i}{n} \\
+                &= a + b \bar{x}
+            \end{aligned}    
+        \end{equation*}
+
+        Ta tính $SD(y)$:
+
+        \begin{equation*}
+            \begin{aligned}
+                SD(y) &= \sqrt{\dfrac{1}{n}\sum_{i=1}^n (y_i - \bar{y})^2} \\
+                &= \sqrt{\dfrac{1}{n} \sum_{i=1}^n (a + b x_i - (a + b \bar{x})^2)} \\
+                &= \sqrt{\dfrac{b^2}{n} \sum_{i=1}^n (x - x_i)^2} \\
+                &= b \sqrt{\dfrac{1}{n}\sum_{i=1}^n (x - x_i)^2} \\
+                &= b SD(x)
+            \end{aligned}
+        \end{equation*}
+
+        Vậy ta có:
+
+        \begin{equation*}
+            \begin{cases}
+                \bar{y} = a + b \bar{x} \\
+                SD(y) = b SD(x)
+            \end{cases}
+        \end{equation*}
+
+        \item Xét dữ liệu trong bài tập 13. Ta biểu diễn IQR của $y_1, \dots, y_n$ theo trung vị và IQR của $x_1, \dots, x_n$.
+        Để đơn giản ta giả sử $y_1 < y_2 < \dots < y_n$ và giả sử $n$ là số lẻ.
+
+        Ta nhận thấy $f(x) a + bx$ là hàm đơn điệu vì vậy vị trí của $Q_1(x), Q_2(x), Q_3 (x)$ cùng vị trí với $Q_1(y), Q_2(y), Q_3(y)$.
+        Vì vậy ta có:
+
+        \begin{equation*}
+            \begin{cases}
+                Q_1 (y) = a + bQ_1(x) \\
+                Q_2 (y) = a + b Q_2(x) \\
+                Q_3 (y) = a + b Q_3(x)
+            \end{cases}
+        \end{equation*}
+
+        Vậy ta tính được:
+
+        \begin{equation*}
+            IQR(y) = Q_3 (y) - Q_1 (y) = a + b Q_3(x) - (a + b Q_1(x)) = b IQR(x)
+        \end{equation*}
+
         \textbf{17.} Ta giả sử phân vị mức $y_q$ của phân phối chuẩn $\mathcal{N}(\mu, \sigma^2)$ được vẽ theo phân vị mức $z_q$ của phân phối chuẩn tắc $\mathcal{N}(0, 1)$.
         Chứng minh rằng hệ số góc và hệ số chặn của đường thẳng là $\sigma$ và $\mu$ tương ứng.
 
@@ -656,7 +715,7 @@ plt.show()
         \end{equation*}
         Ta nhận thấy khi $2k < n$, thì $f(c + d) < f(c)$, $2k = n$ thì $f(c+d)=f(c)$, $2k > n$ thì $f(c+d) > f(c)$.
         Hay khi $k$ tăng dần trước khi đạt đến $n/2$ thì f(c) giảm, và khi $k$ lớn hơn $n / 2$ thì f(c) tăng, nghĩa là f(c) sẽ đạt cực tiểu tại $k=n/2$ nghĩa là $k=n/2$ ở chính giữa dãy số đã được sắp xếp theo thứ tự không giảm.
-        Vì vậy $f(c) = \sum_{i=1}^n \lvert x_i - c \vert = \sum_{i=1}^n (x_i - c)$ đạt cực tiểu khi $c$ chính là trung vị của dãy $x_1, \dots, x_n$ (điều phải chứng minh).
+        Vì vậy $f(c) = \sum_{i=1}^n \lvert x_i - c \vert$ đạt cực tiểu khi $c$ chính là trung vị của dãy $x_1, \dots, x_n$ (điều phải chứng minh).
     \end{enumerate}
 \end{loigiai}
 
