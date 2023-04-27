@@ -712,8 +712,54 @@ plt.show()
                 \mathbb{E} (U_{(k)}) = \dfrac{k}{n+1}
             \end{equation*}
             với $U_{(1)} \leq \dots \leq U_{(n)}$ là mẫu được sắp xếp theo thứ tự không giảm.
-
             
+            Ta có hàm mật độ xác suất của phân phối đều trên đoạn $(0, 1)$ là:
+
+            \begin{equation*}
+                f(u) = \begin{cases}
+                    1 \text{ nếu } 0 < u < 1 \\
+                    0 \text{ nếu ngược lại}
+                \end{cases}
+            \end{equation*}
+
+            Ta có hàm phân bố xác suất của phân phối đều trên đoạn $(0, 1)$ là:
+
+            \begin{equation*}
+                F(u) = \begin{cases}
+                    0 \text{ nếu } u \leq 0 \\
+                    u \text{ nếu } 0 < u < 1 \\
+                    1 \text{ nếu } u \geq 1                    
+                \end{cases}
+            \end{equation*}
+
+            Ta đặt $k$ là số nguyên sao cho $1 \leq k \leq n$.
+            Xác suất để phần tử được sắp xếp thứ $k$ nhỏ hơn hoặc bằng một giá trị $u$ được cho bởi xác suất $k-1$ của $n$ quan sát nhỏ hơn $n$ và $n-k$ quan sát còn lại lớn hơn $u$.
+            Ta tính xác suất $U_k \leq u$:
+
+            \begin{equation*}
+                P(U_k \leq u) = C_{k-1}^n u^{k-1} (1-u)^{n-k}
+            \end{equation*}
+
+            Ta tính hàm mật độ $f(u) = \dfrac{d P(U_k \leq u)}{du}$:
+
+            \begin{equation*}
+                f(u) = k C_k^n u^{k-1} (1-u)^{n-k}
+            \end{equation*}
+
+            Để tính $\mathbb{E}(U_{(k)})$, ta sử dụng công thức định nghĩa kỳ vọng:
+
+            \begin{equation*}
+                \begin{aligned}
+                    \mathbb{E} (U_{(k)}) &= \int_{-\infty}^{\infty} u f(u) du = \int_{0}^{1} u f(u) du \\
+                    &= \int_{0}^{1} k C_k^n u^k (1-u)^{n-k} du \\
+                    &= k C_k^n  B(k+1, n-k+1) (\text{theo định nghĩa hàm beta } B(p, q) = \int_{0}^{1} x^{p-1}. (1-x)^{q-1}dx) \\
+                    &= k C_k^n \dfrac{\Gamma(k+1)\Gamma(n-k+1)}{\Gamma(k+1 + (n-k+1))} (\text{liên hệ giữa hàm Beta và hàm Gamma } B(p, q) = \dfrac{\Gamma(p)\Gamma(q)}{\Gamma(p+q)}) \\
+                    &= k C_k^n \dfrac{\Gamma(k+1)\Gamma(n-k+1)}{\Gamma(n+2)} \\
+                    &= k C_k^n \dfrac{k! (n-k)!}{(n+1)!} (\text{theo công thức tính hàm Gamma } \Gamma(n)=(n-1)! \forall n \in \mathbb{N}) \\
+                    &= k \dfrac{n!}{k!(n-k!)} \dfrac{k!(n-k)!}{(n+1)!} \\
+                    &= \dfrac{k}{n+1}
+                \end{aligned}
+            \end{equation*}
         \end{enumerate}
 
         \item Chứng minh rằng trung bình $\bar{x}$ là hằng số cực tiểu hóa hàm sai lệch bình phương tương ứng với $c$:
